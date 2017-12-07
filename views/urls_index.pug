@@ -3,3 +3,13 @@ html
     title TinyApp
   body
     include partials/_header
+    ul
+      -for (let shortURL in urls) {
+        li(style="display:flex; justify-content:center; align-items: baseline;")
+          a(href=`/u/${shortURL}`)= `${shortURL} : ${urls[shortURL].longURL}`
+
+          a(href=`/urls/${shortURL}`)
+            button Edit
+          form(method="POST" action=`/urls/${shortURL}/delete` style="float:right;")
+            input(type="submit" value="delete")
+      -}
