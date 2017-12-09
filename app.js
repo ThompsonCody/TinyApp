@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 8080;
 
 
 //--- Pug template engine ---
+  // - because why EJS... why?
 app.set('view engine', 'pug');
 
 //--- Passwords ---
@@ -58,6 +59,10 @@ let usersDB = {
 
 
 /*------ ****** FUNCTIONS ****** ------*/
+
+
+// function to add
+  // - add http:// to url input so user does not have to
 
 
 var generateRandomString = () => {
@@ -136,16 +141,13 @@ app.get('/registration', (req, res) => {
 
 app.post('/registration', (req, res) => {
   let{username, email, password} = req.body;
-    // console.log('Register body -->', username, email, password);
-
   if (!(username || password || email)) {
     res.status(400).render('urls_registration', {
       error: 'Email or password missing'
     });
   }
-
+  //dry up using if/else, stops additional if's from running, lighter
   if (emailTaken(email)) {
-    // console.log('Email Taken', usersDB);
     res.status(400).render('urls_register', {
       error: 'Email already here, but not here here, somewhere there'
     });
@@ -217,8 +219,6 @@ app.get("/urls/new", (req, res) => {
 });
   // - form handler for urls_new
   app.post("/urls", (req, res) => {
-    // console.log('--Urls_New POST params:--\n', req.body); // debug statement to see POST params
-
     if(!req.session.user_id){
       res.status(404).send('404:Not Found');
       return;
