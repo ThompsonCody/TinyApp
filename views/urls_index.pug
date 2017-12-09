@@ -6,7 +6,7 @@ html
     ul
       -for (let shortURL in urls) {
         li(style="display:flex; justify-content:center; align-items: baseline;")
-          a(href=`/u/${shortURL}`)= `${shortURL} : ${urls[shortURL].longURL}`
+          a(href=`/u/${shortURL}`)= `${shortURL} : ${urls[shortURL]}`
 
           a(href=`/urls/${shortURL}`)
             button Edit

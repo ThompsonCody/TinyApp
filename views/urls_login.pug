@@ -1,0 +1,13 @@
+html
+  head
+    title TinyApp
+  body
+    include partials/_header
+    div(style="display: flex; justify-content: center; margin-top: 3em;")
+      form(method='POST' action='/login' style="margin: 0 auto;")
+        input(type="email" name="email" placeholder="Email")
+        input(type="password" name="password" placeholder="Password")
+        input(type="submit" name="login")
+        -if(locals.error){
+          h3= error
+        -}

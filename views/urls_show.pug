@@ -3,10 +3,9 @@ html
     title TinyApp
   body
     include partials/_header
-    div
-      h3 ShortURL:
-        a(href=`${shortURL}`)= ` ${shortURL}`
-      form(method="POST" action=`/urls/${shortURL}/update`)
+    div(style="width:100%; display: flex; flex-direction:column; align-items: center; margin-top: 3em;")
+      h3=`${shortURL}:`
+      form(method="POST" action=`/urls/${shortURL}`)
         label(for=`longURL`) Update URL:
-        input(id=`longURL` type="text" name="update_longURL" placeholder=`${longURL}`)
+        input(id=`longURL` type="text" name="longURL" placeholder=`${longURL}`)
         input(type="submit" value="update")

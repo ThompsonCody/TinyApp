@@ -1,0 +1,11 @@
+
+include partials/_head
+div(style="display: flex; justify-content: center; margin-top: 3em;")
+  form(method="POST" action="/registration" )
+    input(id="username" type="text" name="username" placeholder=" Create username")
+    input(type="email" name="email" placeholder="Your Email")
+    input(type="password" name="password" placeholder="Create Password")
+    input(type="submit" name="register" value="register")
+    -if(locals.error){
+      h3= error
+    -}

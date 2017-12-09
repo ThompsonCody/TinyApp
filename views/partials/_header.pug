@@ -1,5 +1,18 @@
 header
   h1(style="text-align:center;") Hari OM, may I has URL?
   nav(style="display:flex; justify-content:space-around")
-    a(href="/urls") Home
-    a(href="/urls/new") New URL
+    -if(!user){
+      a(href='/login') Login
+      a(href="/registration") Register
+    -}else{
+      div(style="width:100%; display: flex; flex-direction:column; align-items: center; margin-top: 3em;")
+        h2= `Hello ${user.username} (${user.email})`
+        nav(style="width: inherit;display: flex; justify-content: space-around; margin-top: 3em;")
+          a(href='/urls/new') New Url
+          //- a(href="/urls/show") All urls
+          form(method="POST" action="/urls/logout")
+            input(type="submit" value="logout")
+    -}
+
+
+
